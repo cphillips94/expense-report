@@ -1,0 +1,33 @@
+<div class="container m-5">
+    <div class="card-header bg-warning text-white">Update a Request</div>
+    <form #myFormTemplate="ngForm" (ngSubmit)="updateTicket()">
+            <div class="card-body">   
+                <div class="mb-3 mt-3">
+                    <label for="title" class="form-label">Request ID :</label>
+                    {{ newRequest.requestId }}
+                    </div>
+                <div class="mb-3 mt-3">
+                    <label for="status" class="form-label">Request Status</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="status" 
+                        placeholder="Enter New status" 
+                        name="status"
+                        required
+                        #myStatus="ngModel"
+                        (change)="test(myStatus)"
+                        [(ngModel)]="newRequest.status">
+                    <div *ngIf="!myStatus.valid" class="small text-danger">status is required!</div>
+                </div>
+               
+                </div>
+            <div class="card-footer bg-warning">
+                <!-- <button type="button" class="btn btn-light" (click)="updateBook()"> -->
+                <button [disabled]="!myFormTemplate.valid" type="submit" class="btn btn-light">
+                    UPDATE
+                </button>
+            </div>
+        </form>
+</div>
+

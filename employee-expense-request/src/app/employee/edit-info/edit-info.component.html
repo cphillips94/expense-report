@@ -1,0 +1,71 @@
+<div class="container m-5">
+    <div class="card-header bg-warning text-white">Update a Info</div>
+    <form #myFormTemplate="ngForm" (ngSubmit)="updateUser()">
+            <div class="card-body">   
+                <div class="mb-3 mt-3">
+                    <label for="title" class="form-label">UserId:</label>
+                    {{ newUser.userId }}
+                    </div>
+                <div class="mb-3 mt-3">
+                    <label for="firstName" class="form-label">First Name :</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="firstName" 
+                        placeholder="Enter First Name" 
+                        name="firstName"
+                        required
+                        #myTitle="ngModel"
+                        (change)="test(myTitle)"
+                        [(ngModel)]="newUser.firstName">
+                    <div *ngIf="!myTitle.valid" class="small text-danger">First name is required!</div>
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="last-name" class="form-label">Last Name:</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="last-name" 
+                        placeholder="Enter Last Name" 
+                        name="last-name"
+                        required
+                        #myAuthor="ngModel"
+                        [(ngModel)]="newUser.lastName">
+                        <div *ngIf="!myAuthor.valid" class="small text-danger">Last name is required!</div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                    <label for="username" class="form-label">Username:</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="username" 
+                        placeholder="Enter username" 
+                        name="username"
+                        required
+                        #myGenre="ngModel"
+                        [(ngModel)]="newUser.userName">
+                        <div *ngIf="!myGenre.valid" class="small text-danger">Username is required!</div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="password" 
+                        placeholder="Enter password" 
+                        name="password"
+                        required
+                        #myCost="ngModel"
+                        [(ngModel)]="newUser.password">
+                        <div *ngIf="!myCost.valid" class="small text-danger">Password is required!</div>
+                    </div>
+                    
+                </div>
+            <div class="card-footer bg-warning">
+                <!-- <button type="button" class="btn btn-light" (click)="updateBook()"> -->
+                <button [disabled]="!myFormTemplate.valid" type="submit" class="btn btn-light">
+                    UPDATE
+                </button>
+            </div>
+        </form>
+</div>

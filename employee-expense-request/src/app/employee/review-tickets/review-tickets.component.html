@@ -1,0 +1,83 @@
+<div class="container">
+    <h3>Employee Requests</h3>
+    <div>
+        <button type="button" class="btn btn-success" (click)="toggleAddForm()">Add a Request</button>
+        <div class="card m-5" *ngIf="toggleAdd">
+            <div class="card-header bg-success text-white">Add a Request</div>
+            <div class="card-body">
+                <form>
+                    <div class="mb-3 mt-3">
+                      <label for="employee-id" class="form-label">Employee Id</label>
+                      <input 
+                        type="text" 
+                        class="form-control" 
+                        id="employee-id" 
+                        placeholder="Enter Employee id:" 
+                        name="employee-id"
+                        [(ngModel)]="newRequest.employeeId">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="request-amount" class="form-label">Request Amount:</label>
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="request-amount" 
+                          placeholder="Enter Last Name:" 
+                          name="request-amount"
+                          [(ngModel)]="newRequest.requestAmount">
+                      </div>
+                      <div class="mb-3 mt-3">
+                        <label for="request-desc" class="form-label">Request Details:</label>
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="request-desc" 
+                          placeholder="Enter Request Details" 
+                          name="request-desc"
+                          [(ngModel)]="newRequest.requestDesc">
+                      </div>
+
+                  </form>
+            </div>
+            <div class="card-footer bg-success">
+                <button type="button" class="btn btn-light" (click)="addTicket()">
+                    ADD
+                </button>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+<div>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Request Id</th>
+            <th>Employee Id</th>
+            <th>Request Amount</th>
+            <th>Requst details</th>
+            <th>Status</th>
+            
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let request of allTickets">
+            <td>{{ request.requestId }}</td>
+            <td>{{request.employeeId}}</td>
+            <td>{{ request.requestAmount }}</td>
+            <td>{{ request.requestDesc }}</td>
+            <td>{{ request.status }}</td>
+       
+
+        </tr>
+    </tbody>
+</table>
+</div>

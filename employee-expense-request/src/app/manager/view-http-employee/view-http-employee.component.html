@@ -1,0 +1,113 @@
+<div class="container">
+    <h3>List of Employees</h3>
+    <div>
+        <button type="button" class="btn btn-success" (click)="toggleAddForm()">Add a Employee</button>
+        <div class="card m-5" *ngIf="toggleAdd">
+            <div class="card-header bg-success text-white">Add a Employee</div>
+            <div class="card-body">
+                <form>
+                    <div class="mb-3 mt-3">
+                      <label for="first-name" class="form-label">First Name:</label>
+                      <input 
+                        type="text" 
+                        class="form-control" 
+                        id="first-name" 
+                        placeholder="Enter First Name:" 
+                        name="firstName"
+                        [(ngModel)]="newUser.firstName">
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label for="last-name" class="form-label">Last Name:</label>
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="last-name" 
+                          placeholder="Enter Last Name:" 
+                          name="lastName"
+                          [(ngModel)]="newUser.lastName">
+                      </div>
+                      <div class="mb-3 mt-3">
+                        <label for="username" class="form-label">Username:</label>
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="username" 
+                          placeholder="Enter username" 
+                          name="userName"
+                          [(ngModel)]="newUser.userName">
+                      </div>
+                      <div class="mb-3 mt-3">
+                        <label for="password" class="form-label">Password:</label>
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="password" 
+                          placeholder="Enter password" 
+                          name="password"
+                          [(ngModel)]="newUser.password">
+                      </div>
+                      <div class="mb-3 mt-3">
+                        <label for="role" class="form-label">Role:</label>
+                        <input 
+                          type="text" 
+                          class="form-control" 
+                          id="role" 
+                          placeholder="Enter Employee role" 
+                          name="role"
+                          [(ngModel)]="newUser.role">
+                      </div>
+                    
+                  </form>
+            </div>
+            <div class="card-footer bg-success">
+                <button type="button" class="btn btn-light" (click)="addUser()">
+                    ADD
+                </button>
+            </div>
+        </div>
+
+    </div>
+
+
+
+
+
+
+
+
+
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th>UserId</th>
+                    <th>FirstName</th>
+                    <th>LastName</th>
+                    <th>Username</th>
+                    <th>Role</th>
+                    <th>Edit</th>
+                    
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let user of allUsers">
+                    <td>{{ user.userId }}</td>
+                    <td>{{user.firstName}}</td>
+                    <td>{{ user.lastName }}</td>
+                    <td>{{ user.userName }}</td>
+                    <td>{{user.role | uppercase}}</td>
+                    <td>
+                        <button 
+                            type="button" 
+                            class="btn btn-primary"
+                            (click)="goToEditUser(user.userId)">
+                            <i class="material-icons">edit</i>
+                        </button>
+                    </td>
+
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+

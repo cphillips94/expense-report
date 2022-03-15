@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
 
   validateUser(){
     let returnUser: User = this.userService.validateUser(this.newUser);
-    sessionStorage.setItem('idNumber',JSON.stringify(returnUser.idNumber));
+    //sessionStorage.setItem('idNumber',JSON.stringify(returnUser.idNumber));
     
 
 

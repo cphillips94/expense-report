@@ -28,7 +28,7 @@ export class ReviewTicketsComponent implements OnInit {
   }
 
   loadAllTicketsById(){
-    this.ticketHttpService.fetchAllTicketByRequest(Number(sessionStorage.getItem('idNumber'))).subscribe((response)=>{
+    this.ticketHttpService.fetchAllTickets().subscribe((response)=>{
       console.log(response);
       this.allTickets= response;
     });
@@ -50,7 +50,7 @@ export class ReviewTicketsComponent implements OnInit {
 
   addTicket(){
     this.ticketHttpService.addTicket(this.newRequest).subscribe((response)=>{
-      console.log(response);
+      
       this.newRequest={
         requestId:0,
         employeeId:0,

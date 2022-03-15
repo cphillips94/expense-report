@@ -10,22 +10,22 @@ import java.util.List;
 import exception.RequestNotFoundException;
 import exception.SystemException;
 
-import pojo.RequestPojo;
-import pojo.UserPojo;
+import pojo.PendingRequestPojo;
+import pojo.EmployeePojo;
 
 public class RequestDaoImpl implements RequestDao{
 
-	public List<RequestPojo> fetchAllRequests() throws SystemException, RequestNotFoundException {
-		List<RequestPojo> allRequests = new ArrayList<RequestPojo>();
+	public List<PendingRequestPojo> fetchAllRequests() throws SystemException, RequestNotFoundException {
+		List<PendingRequestPojo> allRequests = new ArrayList<PendingRequestPojo>();
 		Connection conn = DBUtil.obtainConnection();
 		
 		try {
 			Statement stmt = conn.createStatement();
-			String query = "select * from request_details";
+			String query = "select * from pending_reimbursement";
 			ResultSet rs = stmt.executeQuery(query);
 			while(rs.next()) {
-				RequestPojo requestPojo = new RequestPojo(rs.getInt(1), rs.getInt(2), rs.getDouble(3), rs.getString(4), rs.getString(5));
-				allRequests.add(requestPojo);
+				PendingRequestPojo pendingRequestPojo = new PendingRequestPojo(rs.getInt(1), rs.getInt(2), rs.getBoolean(3), rs.getDate(4), rs.getInt(5));
+				allRequests.add(pendingRequestPojo);
 			}
 			
 		} catch (SQLException e) {
@@ -39,17 +39,17 @@ public class RequestDaoImpl implements RequestDao{
 		return allRequests;
 	}
 
-	public RequestPojo fetchARequest(int requestId) throws RequestNotFoundException, SystemException {
+	public PendingRequestPojo fetchARequest(int reimbursementId) throws RequestNotFoundException, SystemException {
 		
-		RequestPojo requestPojo = null;
+		PendingRequestPojo pendingRequestPojo = null;
 		Connection conn = DBUtil.obtainConnection();
 		
 		try {
 			Statement stmt = conn.createStatement();
-			String query = "select * from request_details where request_id="+requestId;
+			String query = "select * from request_details where reimbursement_id="+reimbursementId;
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()) {
-				requestPojo = new RequestPojo(rs.getInt(1), rs.getInt(2), rs.getInt(3), rs.getString(5), rs.getString(6));
+				pendingRequestPojo = new PendingRequestPojo(rs.getInt(1), rs.getInt(2), rs.getBoolean(3), rs.getDate(5), rs.getInt(6));
 			}
 			
 		} catch (SQLException e) {
@@ -57,16 +57,16 @@ public class RequestDaoImpl implements RequestDao{
 			throw new SystemException();
 		}
 		
-		return requestPojo;
+		return pendingRequestPojo;
 	}
 
-	public RequestPojo updateRequest(RequestPojo requestPojo) throws SystemException {
+	public PendingRequestPojo updateRequest(PendingRequestPojo pendingRequestPojo) throws SystemException {
 		
 		Connection conn = DBUtil.obtainConnection();
 		
 		try {
 			Statement stmt = conn.createStatement();
-			String query = "update request_details set request_status="+requestPojo.getRequestStatus()+" where request_id="+requestPojo.getRequestStatus();
+			String query = "update pending_reimbursement set request_status="+pendingRequestPojo.isRequestStatus()+" where reimbursement_id="+pendingRequestPojo.getReimbursementId();
 			int rows = stmt.executeUpdate(query);
 		} catch (SQLException e) {
 			
@@ -74,42 +74,37 @@ public class RequestDaoImpl implements RequestDao{
 		}
 		
 		
-		return requestPojo;
+		return pendingRequestPojo;
 	}
 
-	public RequestPojo addRequest(RequestPojo requestPojo) throws SystemException {
+	public PendingRequestPojo addRequest(PendingRequestPojo pendingRequestPojo) throws SystemException {
 		
-		Connection conn = DBUtil.obtainConnection();
-		try {
-			Statement stmt = conn.createStatement();
-			int lastRequestId = 0;
-			String query1 = "SELECT MAX(request_id) FROM request_details";
-			ResultSet rs = stmt.executeQuery(query1);
-			if(rs.next()) {
-				lastRequestId = rs.getInt(1);
-			}
-			int newRequestId = lastRequestId + 1;
-			
-			String query2 = "INSERT INTO request_details VALUES("+newRequestId+"','"+requestPojo.getUserId()+"','"+requestPojo.getRequestAmount()+"',"+requestPojo.getRequestDescription()+",'"+requestPojo.getRequestStatus()+"')";
-			int rows = stmt.executeUpdate(query2);
-			requestPojo.setRequestId(newRequestId);
-		} catch (SQLException e) {
-			throw new SystemException();
-		}
-		
-		return requestPojo;
+		  Connection conn = DBUtil.obtainConnection();
+	        try {
+	       Statement stmt = conn.createStatement();
+		   String query2 = "INSERT INTO pending_reimbursement(request_amount) VALUES('"+pendingRequestPojo.getRequestAmount()+"') RETURNING reimbursement_id";
+         ResultSet rs = stmt.executeQuery(query2);
+         if(rs.next()) {
+        	 pendingRequestPojo.setReimbursementId(rs.getInt(1));
+         }
+
+     } catch (SQLException e) {
+         throw new SystemException();
+     }
+   
+     return pendingRequestPojo;
 	}
 
-	public RequestPojo deleteRequest(int requestId) throws SystemException {
+	public PendingRequestPojo deleteRequest(int pendingRequestId) throws SystemException {
 		
-		RequestPojo requestPojo = null;
+		PendingRequestPojo pendingRequestPojo = null;
 		Connection conn = DBUtil.obtainConnection();
 		
 		try {
 			try {
-				requestPojo = fetchARequest(requestId);
+				pendingRequestPojo = fetchARequest(pendingRequestId);
 				Statement stmt = conn.createStatement();
-				String query = "delete from reqest_details where request_id="+requestId+";";
+				String query = "delete from pending_reimbursement where reimbursement_id="+pendingRequestId+";";
 				int rows = stmt.executeUpdate(query);
 			} catch (RequestNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -127,7 +122,7 @@ public class RequestDaoImpl implements RequestDao{
 			
 		}
 		
-		return requestPojo;
+		return pendingRequestPojo;
 	}
 
 }

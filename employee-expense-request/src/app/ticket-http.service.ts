@@ -12,22 +12,22 @@ export class TicketHttpService {
 
   fetchAllTickets(): Observable<ticket[]>{
     // we need to work with HttpClient to consume an endpoint
-    return this.http.get<ticket[]>("http://localhost:4040/api/request");
+    return this.http.get<ticket[]>("http://localhost:4040/api/requests");
   }
 
 
   addTicket(ticketModel: ticket): Observable<ticket>{
-    return this.http.post<ticket>("http://localhost:4040/api/request", JSON.stringify(ticketModel));
+    return this.http.post<ticket>("http://localhost:4040/api/requests", JSON.stringify(ticketModel));
   }
 
   updateTicket(ticketModel: ticket): Observable<ticket>{
-    return this.http.put<ticket>("http://localhost:4040/api/request", JSON.stringify(ticketModel));
+    return this.http.put<ticket>("http://localhost:4040/api/requests", JSON.stringify(ticketModel));
   }
 
   fetchATicket(requestId: number): Observable<ticket>{
-    return this.http.get<ticket>("http://localhost:4040/api/request/"+requestId);
+    return this.http.get<ticket>("http://localhost:4040/api/requests/"+requestId);
   }
   fetchAllTicketByRequest(idNumber: number):Observable<ticket[]>{
-    return this.http.get<ticket[]>("http://localhost:4040/api/request/"+idNumber);
+    return this.http.get<ticket[]>("http://localhost:4040/api/requests/"+idNumber);
   }
 }

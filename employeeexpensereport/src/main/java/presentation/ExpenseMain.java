@@ -11,8 +11,8 @@ import exception.RequestNotFoundException;
 import exception.SystemException;
 import io.javalin.Javalin;
 
-import pojo.RequestPojo;
-import pojo.UserPojo;
+import pojo.PendingRequestPojo;
+import pojo.EmployeePojo;
 import service.ExpenseService;
 import service.ExpenseServiceImpl;
 
@@ -23,54 +23,54 @@ public class ExpenseMain {
 		Javalin myServer = Javalin.create((config) -> config.enableCorsForAllOrigins()).start(4040);
 		System.out.println("server listening at port 4040...");
 //list all users
-		myServer.get("api/users", (ctx)-> {
-			List<UserPojo> allUsers = expenseService.listAllUser();
+		myServer.get("/api/users", (ctx)-> {
+			List<EmployeePojo> allUsers = expenseService.listAllUser();
 			ctx.json(allUsers);
 			
 		});
 		//list all requests
-		myServer.get("api/requests", (ctx)-> {
-			List<RequestPojo> allRequests = expenseService.fetchAllRequests();
+		myServer.get("/api/requests", (ctx)-> {
+			List<PendingRequestPojo> allRequests = expenseService.fetchAllRequests();
 			ctx.json(allRequests);
 			
 		});
 		//add a request
-		myServer.post("api/requests", (ctx)-> {
+		myServer.post("/api/requests", (ctx)-> {
 			
-			RequestPojo newRequest = ctx.bodyAsClass(RequestPojo.class);
-			RequestPojo returnedRequest = expenseService.addRequest(newRequest);
+			PendingRequestPojo newRequest = ctx.bodyAsClass(PendingRequestPojo.class);
+			PendingRequestPojo returnedRequest = expenseService.addRequest(newRequest);
 			ctx.json(returnedRequest);
 		
 		});
 		
 		//update request
-		myServer.put("api/requests", (ctx)-> {
-		RequestPojo updateRequest = ctx.bodyAsClass(RequestPojo.class);
-		RequestPojo returnUpdatedRequest = expenseService.updateRequest(updateRequest);
+		myServer.put("/api/requests", (ctx)-> {
+		PendingRequestPojo updateRequest = ctx.bodyAsClass(PendingRequestPojo.class);
+		PendingRequestPojo returnUpdatedRequest = expenseService.updateRequest(updateRequest);
 		ctx.json(returnUpdatedRequest);
 	
 		});
 		//fetch A user
-		myServer.get("api/users/{bid}", (ctx)-> {
+		myServer.get("/api/users/{bid}", (ctx)-> {
 			
 			String userId = ctx.pathParam("bid");
-			UserPojo fetchedUser = expenseService.fetchAUser(Integer.parseInt(userId));
+			EmployeePojo fetchedUser = expenseService.fetchAUser(Integer.parseInt(userId));
 			ctx.json(fetchedUser);
 			
 		
 		});
 		//fetch A request
-		myServer.get("api/requests/{bid}", (ctx)-> {
+		myServer.get("/api/requests/{bid}", (ctx)-> {
 			
 			String requestId = ctx.pathParam("bid");
-			RequestPojo fetchedRequest = expenseService.fetchARequest(Integer.parseInt(requestId));
+			PendingRequestPojo fetchedRequest = expenseService.fetchARequest(Integer.parseInt(requestId));
 			ctx.json(fetchedRequest);
 			
 		});
 		//update a user
-		myServer.put("api/users", (ctx)-> {
-			UserPojo updateUser = ctx.bodyAsClass(UserPojo.class);
-			UserPojo returnUpdatedUser = expenseService.updateUser(updateUser);
+		myServer.put("/api/users", (ctx)-> {
+			EmployeePojo updateUser = ctx.bodyAsClass(EmployeePojo.class);
+			EmployeePojo returnUpdatedUser = expenseService.updateUser(updateUser);
 			ctx.json(returnUpdatedUser);
 	});
 		

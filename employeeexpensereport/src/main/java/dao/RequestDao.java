@@ -4,19 +4,19 @@ import java.util.List;
 
 import exception.RequestNotFoundException;
 import exception.SystemException;
-import pojo.RequestPojo;
+import pojo.PendingRequestPojo;
 
 public interface RequestDao {
 	
-	List<RequestPojo> fetchAllRequests() throws SystemException, RequestNotFoundException;
+	List<PendingRequestPojo> fetchAllRequests() throws SystemException, RequestNotFoundException;
 	
-	RequestPojo fetchARequest(int requestId) throws RequestNotFoundException, SystemException;
+	PendingRequestPojo fetchARequest(int requestId) throws RequestNotFoundException, SystemException;
 	
-	RequestPojo updateRequest(RequestPojo requestPojo) throws SystemException;
+	PendingRequestPojo updateRequest(PendingRequestPojo requestPojo) throws SystemException;
 	
-	RequestPojo addRequest(RequestPojo requestPojo) throws SystemException;
+	PendingRequestPojo addRequest(PendingRequestPojo requestPojo) throws SystemException;
 	
-	RequestPojo deleteRequest(int requestId) throws SystemException;
+	PendingRequestPojo deleteRequest(int requestId) throws SystemException;
 	
 	
 

@@ -12,10 +12,12 @@ public interface ManagerDao {
 	
 	List<ManagerPojo> listAllManagers() throws SystemException, NoEmployeeFoundException;
 	
-	ManagerPojo fetchAManager(int managerId) throws SystemException;
+	
 	
 
 
 	ManagerPojo createEmployee(ManagerPojo managerPojo) throws SystemException;
+
+	ManagerPojo fetchAManager(int managerId) throws SystemException;
 
 }

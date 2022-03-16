@@ -21,7 +21,7 @@ public class DBUtil {
 	//Singleton design pattern
 	 static Connection obtainConnection() {
 		 
-		String connectionUrl = "jdbc:postgresql://127.0.0.1:5432/expense_report";
+		String connectionUrl = "jdbc:postgresql://127.0.0.1:5432/employee_expense_report";
 		String userName = "postgres";
 		String password = "postgres";
 		

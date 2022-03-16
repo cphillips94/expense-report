@@ -49,7 +49,7 @@ public class EmployeeDaoImpl implements EmployeeDao{
 		
 		try {
 			Statement stmt = conn.createStatement();
-			String query = "select * from employee_details where user_id="+employeeId;
+			String query = "select * from employee_details where employee_id="+employeeId+";";
 			ResultSet rs = stmt.executeQuery(query);
 			if(rs.next()) {
 				employeePojo = new EmployeePojo(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getString(4), rs.getString(5));
@@ -71,7 +71,7 @@ Connection conn = DBUtil.obtainConnection();
 		
 		try {
 			Statement stmt = conn.createStatement();
-			String query = "update employee_details set first_name="+employeePojo.getEmployeeFirst()+", last_name="+employeePojo.getEmployeeLast()+", password="+employeePojo.getEmployeePassword()+" where user_id="+employeePojo.getEmployeeId();
+			String query = "update employee_details set employee_first_name='"+employeePojo.getEmployeeFirst()+"', employee_last_name='"+employeePojo.getEmployeeLast()+"', employee_password='"+employeePojo.getEmployeePassword()+"' where employee_id='"+employeePojo.getEmployeeId()+"';";
 			int rows = stmt.executeUpdate(query);
 		} catch (SQLException e) {
 			
@@ -90,7 +90,7 @@ Connection conn = DBUtil.obtainConnection();
 		  Connection conn = DBUtil.obtainConnection();
 	        try {
 	       Statement stmt = conn.createStatement();
-		   String query2 = "INSERT INTO employee_details(employee_first_name, employee_last_name, employee_contact, employee_password) VALUES('"+employeePojo.getEmployeeFirst()+"','"+employeePojo.getEmployeeLast()+"','"+employeePojo.getEmployeeContact()+"',"+employeePojo.getEmployeePassword()+"') RETURNING employee_id";
+		   String query2 = "INSERT INTO employee_details(employee_first_name, employee_last_name, employee_contact, employee_password) VALUES('"+employeePojo.getEmployeeFirst()+"','"+employeePojo.getEmployeeLast()+"','"+employeePojo.getEmployeeContact()+"','"+employeePojo.getEmployeePassword()+"') RETURNING employee_id;";
            ResultSet rs = stmt.executeQuery(query2);
            if(rs.next()) {
                employeePojo.setEmployeeId(rs.getInt(1));

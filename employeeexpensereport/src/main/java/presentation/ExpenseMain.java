@@ -82,8 +82,8 @@ public class ExpenseMain {
 		//fetch A employee
 		myServer.get("/api/employee/{bid}", (ctx)-> {
 			
-			String userId = ctx.pathParam("bid");
-			EmployeePojo fetchedUser = expenseService.fetchAnEmployee(Integer.parseInt(userId));
+			String employeeId = ctx.pathParam("bid");
+			EmployeePojo fetchedUser = expenseService.fetchAnEmployee(Integer.parseInt(employeeId));
 			ctx.json(fetchedUser);
 			
 		
@@ -91,8 +91,8 @@ public class ExpenseMain {
 		//fetch A manager
 		myServer.get("/api/manager/{bid}", (ctx)-> {
 			
-			String userId = ctx.pathParam("bid");
-			ManagerPojo fetchedManager = expenseService.fetchAManager(Integer.parseInt(userId));
+			String managerId = ctx.pathParam("bid");
+			ManagerPojo fetchedManager = expenseService.fetchAManager(Integer.parseInt(managerId));
 			ctx.json(fetchedManager);
 			
 		
@@ -115,7 +115,7 @@ public class ExpenseMain {
 			
 		});
 		//update a user
-		myServer.put("/api/users", (ctx)-> {
+		myServer.put("/api/employee", (ctx)-> {
 			EmployeePojo updateUser = ctx.bodyAsClass(EmployeePojo.class);
 			EmployeePojo returnUpdatedUser = expenseService.updateEmployee(updateUser);
 			ctx.json(returnUpdatedUser);

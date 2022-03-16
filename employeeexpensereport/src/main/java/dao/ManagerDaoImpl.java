@@ -42,7 +42,7 @@ public class ManagerDaoImpl implements ManagerDao{
 	}
 
 	@Override
-	public ManagerPojo fetchAnEmployee(int managerId) throws SystemException {
+	public ManagerPojo fetchAManager(int managerId) throws SystemException {
 		ManagerPojo managerPojo = null;
 		Connection conn = DBUtil.obtainConnection();
 		

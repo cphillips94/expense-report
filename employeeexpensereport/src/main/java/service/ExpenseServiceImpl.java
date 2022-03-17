@@ -82,9 +82,9 @@ public class ExpenseServiceImpl implements ExpenseService{
 		// TODO Auto-generated method stub
 		return managerDao.fetchAManager(managerId);
 	}
-	public ManagerPojo createEmployee(ManagerPojo managerPojo) throws SystemException {
+	public ManagerPojo createManager(ManagerPojo managerPojo) throws SystemException {
 		// TODO Auto-generated method stub
-		return managerDao.createEmployee(managerPojo);
+		return managerDao.createManager(managerPojo);
 	}
 	public List<EmployeePojo> listAllUser() throws SystemException, NoEmployeeFoundException {
 		// TODO Auto-generated method stub
@@ -102,6 +102,9 @@ public class ExpenseServiceImpl implements ExpenseService{
 		// TODO Auto-generated method stub
 		return employeeDao.updateEmployee(employeePojo);
 	}
+
+
+
 
 		
 	}

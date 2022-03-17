@@ -41,6 +41,6 @@ public interface ExpenseService {
 	
 	ManagerPojo fetchAManager(int managerId) throws SystemException;
 	
-	ManagerPojo createEmployee(ManagerPojo managerPojo) throws SystemException;
+	ManagerPojo createManager(ManagerPojo managerPojo) throws SystemException;
 
 }

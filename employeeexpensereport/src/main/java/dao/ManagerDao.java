@@ -16,7 +16,7 @@ public interface ManagerDao {
 	
 
 
-	ManagerPojo createEmployee(ManagerPojo managerPojo) throws SystemException;
+	ManagerPojo createManager(ManagerPojo managerPojo) throws SystemException;
 
 	ManagerPojo fetchAManager(int managerId) throws SystemException;
 

@@ -7,28 +7,27 @@
     <table class="table table-striped">
         <thead>
             <tr>
-                <th>User id</th>
+                <th>Employee id</th>
                 <th>First Name</th>
                 <th>Last Name</th>
-                <th>Username</th>
+                <th>Employee Contact</th>
                 <th>Password</th>
-                <th>Role</th>
                 <th>Edit</th>
             </tr>
         </thead>
         <tbody>
             <tr let newUser = newUser>
-                <td>{{ newUser.userId }}</td>
-                <td>{{ newUser.firstName }}</td>
-                <td>{{ newUser.lastName }}</td>
-                <td>{{ newUser.userName}}</td>
-                <td>{{ newUser.password }}</td>
-                <td>{{ newUser.role }}</td>
+                <td>{{ newUser.employeeId}</td>
+                <td>{{ newUser.employeeFirstName}}</td>
+                <td>{{ newUser.employeeLastName }}</td>
+                <td>{{ newUser.employeeContact}}</td>
+                <td>{{ newUser.employeePassword }}</td>
+        
                 <td>
                     <button 
                         type="button" 
                         class="btn btn-primary"
-                        (click)="goToEditInfo(newUser.userId)">
+                        (click)="goToEditInfo(newUser.employeeId)">
                         <i class="material-icons">edit</i>
                     </button>
                 </td>

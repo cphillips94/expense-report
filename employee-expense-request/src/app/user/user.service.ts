@@ -10,26 +10,23 @@ export class UserService {
   constructor(private authService: AuthService) { }
 
   validateUser(newUser: User): User{
-    if(newUser.role=="manager" && newUser.userName=="manager" && newUser.password=="manager"){
+    if(newUser.employeeFirstName=="employee" && newUser.employeePassword=="employee"){
       // user has succesfully logged in as an admin
       // 1. store the user information in the browser storage
       this.authService.storeUser(newUser);
       // 2. mark that we have logged in
       this.authService.loggedIn=true;
-    }else if(newUser.role=="employee" && newUser.userName=="employee" && newUser.password=="employee"){
-      // user has succesfully logged in as a customer
-      // 1. store the user information in the browser storage
-      this.authService.storeUser(newUser);
-      // 2. mark that we have logged in
-      this.authService.loggedIn=true;
+
     }else{
       // invalid credentials
-      newUser = {
-        userName: "",
-        password: "",
-        role: "",
-        idNumber: 0
-      }
+      newUser={
+      employeeId: 0,
+      employeeFirstName: "",
+      employeeLastName:"",
+      employeeContact:"",
+      employeePassword:""
+  }
+
     }
     return newUser;
   }

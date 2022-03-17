@@ -1,0 +1,33 @@
+<form (ngSubmit)="validateManager()">
+    <div class="card-header bg-success text-white">LOGIN<div>{{ errorMessage }}</div></div>
+        <div class="card-body">
+            
+                <div class="mb-3 mt-3">
+                    <label for="managerFirstName" class="form-label">First name:</label>
+                    <input 
+                    type="text" 
+                    class="form-control" 
+                    id="managerFirstName" 
+                    placeholder="Enter First name" 
+                    name="managerFirstName"
+                    [(ngModel)]="newManager.managerFirstName">
+                </div>
+                <div class="mb-3 mt-3">
+                    <label for="password" class="form-label">Password:</label>
+                    <input 
+                        type="text" 
+                        class="form-control" 
+                        id="password" 
+                        placeholder="Enter password" 
+                        name="password"
+                        [(ngModel)]="newManager.managerPassword">
+                    </div>
+            
+        </div>
+        <div class="card-footer bg-success">
+            <button type="submit" class= "btn btn-light">
+                LOGIN
+            </button>
+        </div>
+    </form>
+

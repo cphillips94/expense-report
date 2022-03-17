@@ -16,6 +16,8 @@ import { EditTicketComponent } from './manager/edit-ticket/edit-ticket.component
 import { EditInfoComponent } from './employee/edit-info/edit-info.component';
 import { UserInfoComponent } from './employee/user-info/user-info.component';
 
+import { LoginHomePageComponent } from './login-home-page/login-home-page.component';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +30,8 @@ import { UserInfoComponent } from './employee/user-info/user-info.component';
     ViewHttpEmployeeComponent,
     EditTicketComponent,
     EditInfoComponent,
-    UserInfoComponent
+    UserInfoComponent,
+    LoginHomePageComponent
   ],
   imports: [
     BrowserModule,

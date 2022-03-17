@@ -62,6 +62,15 @@ public class ExpenseMain {
 			ctx.json(returnedEmployee);
 		
 		});
+		//add a manager
+		myServer.post("/api/manager", (ctx)-> {
+			
+			ManagerPojo newManager = ctx.bodyAsClass(ManagerPojo.class);
+			ManagerPojo  returnedManager = expenseService.createManager(newManager);
+			ctx.json(returnedManager);
+		
+		});
+	
 	
 		//add a resolved request
 		//myServer.post("/api/resolved-request", (ctx)-> {

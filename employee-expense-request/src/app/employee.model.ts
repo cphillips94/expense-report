@@ -1,8 +1,7 @@
 export interface employee{
-    userId: number,
-    firstName: string,
-    lastName: string,
-    userName: string,
-    password: string,
-    role: string
+  employeeId: number,
+  employeeFirstName: string,
+  employeeLastName: string,
+  employeeContact: string,
+  employeePassword: string
 }

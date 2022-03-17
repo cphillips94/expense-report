@@ -13,12 +13,12 @@ export class EditInfoComponent implements OnInit {
 
 
   newUser: employee= {
-    userId: 0,
-    firstName: "",
-    lastName: "",
-    userName: "",
-    password: "",
-    role: ""
+    employeeId: 0,
+    employeeFirstName: "",
+    employeeLastName: "",
+    employeeContact: "",
+    employeePassword: "",
+
   }
 
   constructor(private activatedRoute: ActivatedRoute, 

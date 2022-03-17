@@ -11,10 +11,11 @@ import { User } from '../user.model';
 export class LoginComponent implements OnInit {
 
   newUser: User={
-    userName: "",
-    password: "",
-    role: "",
-    idNumber: 0
+    employeeId: 0,
+    employeeFirstName: "",
+    employeeLastName:"",
+    employeeContact:"",
+    employeePassword:""
   }
   errorMessage: string = "";
   constructor(private userService: UserService, private router: Router) { }
@@ -30,14 +31,14 @@ export class LoginComponent implements OnInit {
     
 
 
-    if(returnUser.userName == ""){
+    if(returnUser.employeeFirstName== ""){
       // invalid credentials
       this.errorMessage = "Invalid Credentials!!";
     }else{
       // successful login
-      if(returnUser.role == "admin"){
-        //navigate to book-crud
-        this.router.navigate(['view-users']);
+      if(returnUser.employeeFirstName== "employee"){
+        //navigate to book-crud in the old one need to fix ??
+        this.router.navigate(['user-info']);
       }else{
         //navigate to display component
         this.router.navigate(['header']);

@@ -13,12 +13,12 @@ export class ViewHttpEmployeeComponent implements OnInit {
   toggleAdd: boolean = false;
 
   newUser: employee = {
-    userId: 0,
-    firstName: "",
-    lastName: "",
-    userName: "",
-    password: "",
-    role: ""
+    employeeId: 0,
+    employeeFirstName: "",
+    employeeLastName: "",
+    employeeContact: "",
+    employeePassword: "",
+ 
   }
 
 
@@ -53,13 +53,12 @@ export class ViewHttpEmployeeComponent implements OnInit {
     this.employeeHttpService.addUser(this.newUser).subscribe((response)=>{
       console.log(response);
       this.newUser={
-        userId:0,
-        firstName:"",
-        lastName:"",
-        userName:"",
-        password:"",
-        role:""
-
+        employeeId: 0,
+        employeeFirstName: "",
+        employeeLastName: "",
+        employeeContact: "",
+        employeePassword: "",
+     
       }
       this.loadAllUsers();
     })

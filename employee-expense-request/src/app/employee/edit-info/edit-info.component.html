@@ -4,7 +4,7 @@
             <div class="card-body">   
                 <div class="mb-3 mt-3">
                     <label for="title" class="form-label">UserId:</label>
-                    {{ newUser.userId }}
+                    {{ newUser.employeeId}}
                     </div>
                 <div class="mb-3 mt-3">
                     <label for="firstName" class="form-label">First Name :</label>
@@ -17,7 +17,7 @@
                         required
                         #myTitle="ngModel"
                         (change)="test(myTitle)"
-                        [(ngModel)]="newUser.firstName">
+                        [(ngModel)]="newUser.employeeFirstName">
                     <div *ngIf="!myTitle.valid" class="small text-danger">First name is required!</div>
                 </div>
                 <div class="mb-3 mt-3">
@@ -30,11 +30,11 @@
                         name="last-name"
                         required
                         #myAuthor="ngModel"
-                        [(ngModel)]="newUser.lastName">
+                        [(ngModel)]="newUser.employeeLastName">
                         <div *ngIf="!myAuthor.valid" class="small text-danger">Last name is required!</div>
                     </div>
                     <div class="mb-3 mt-3">
-                    <label for="username" class="form-label">Username:</label>
+                    <label for="username" class="form-label">Contact:</label>
                     <input 
                         type="text" 
                         class="form-control" 
@@ -43,8 +43,8 @@
                         name="username"
                         required
                         #myGenre="ngModel"
-                        [(ngModel)]="newUser.userName">
-                        <div *ngIf="!myGenre.valid" class="small text-danger">Username is required!</div>
+                        [(ngModel)]="newUser.employeeContact">
+                        <div *ngIf="!myGenre.valid" class="small text-danger">Contactis required!</div>
                     </div>
                     <div class="mb-3 mt-3">
                     <label for="password" class="form-label">Password:</label>
@@ -56,7 +56,7 @@
                         name="password"
                         required
                         #myCost="ngModel"
-                        [(ngModel)]="newUser.password">
+                        [(ngModel)]="newUser.employeePassword">
                         <div *ngIf="!myCost.valid" class="small text-danger">Password is required!</div>
                     </div>
                     

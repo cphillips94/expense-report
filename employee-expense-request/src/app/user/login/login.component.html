@@ -1,47 +1,29 @@
+
 <form (ngSubmit)="validateUser()">
     <div class="card-header bg-success text-white">LOGIN<div>{{ errorMessage }}</div></div>
         <div class="card-body">
             
                 <div class="mb-3 mt-3">
-                    <label for="username" class="form-label">Username:</label>
+                    <label for="employeeFirstName" class="form-label">First name:</label>
                     <input 
                     type="text" 
                     class="form-control" 
-                    id="username" 
-                    placeholder="Enter username" 
-                    name="username"
-                    [(ngModel)]="newUser.userName">
+                    id="employeeFirstName" 
+                    placeholder="Enter First name" 
+                    name="employeeFirstName"
+                    [(ngModel)]="newUser.employeeFirstName">
                 </div>
                 <div class="mb-3 mt-3">
                     <label for="password" class="form-label">Password:</label>
                     <input 
-                        type="password" 
+                        type="text" 
                         class="form-control" 
                         id="password" 
                         placeholder="Enter password" 
                         name="password"
-                        [(ngModel)]="newUser.password">
+                        [(ngModel)]="newUser.employeePassword">
                     </div>
-                    <div class="mb-3 mt-3">
-                    <label for="role" class="form-label">Role:</label>
-                    <input 
-                        type="text" 
-                        class="form-control" 
-                        id="role" 
-                        placeholder="Enter role" 
-                        name="role"
-                        [(ngModel)]="newUser.role">
-                    </div>  
-                    <div class="mb-3 mt-3">
-                        <label for="idNumber" class="form-label">IdNumber:</label>
-                        <input 
-                            type="text" 
-                            class="form-control" 
-                            id="idNumber" 
-                            placeholder="Enter Id Number" 
-                            name="idNumber"
-                            [(ngModel)]="newUser.idNumber">
-                        </div> 
+            
         </div>
         <div class="card-footer bg-success">
             <button type="submit" class= "btn btn-light">

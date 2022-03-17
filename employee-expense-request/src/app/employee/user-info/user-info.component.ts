@@ -10,12 +10,12 @@ import { employee } from 'src/app/employee.model';
 })
 export class UserInfoComponent implements OnInit {
   newUser: employee = {
-    userId: 0,
-    firstName: "",
-    lastName: "",
-    userName: "",
-    password: "",
-    role: ""
+    employeeId: 0,
+    employeeFirstName: "",
+    employeeLastName: "",
+    employeeContact: "",
+    employeePassword: "",
+
   }
 
 
@@ -43,12 +43,12 @@ export class UserInfoComponent implements OnInit {
    this.employeeHttpService.addUser(this.newUser).subscribe((response)=>{
      console.log(response);
      this.newUser= {
-      userId: 0,
-      firstName: "",
-      lastName: "",
-      userName: "",
-      password: "",
-      role: ""
+      employeeId: 0,
+      employeeFirstName: "",
+      employeeLastName: "",
+      employeeContact:"",
+      employeePassword: "",
+      
     }
      this.loadAUser();
    })

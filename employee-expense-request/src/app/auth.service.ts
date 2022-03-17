@@ -1,10 +1,14 @@
 import { Injectable } from '@angular/core';
+import { Manager } from './manager-log/manager.model';
 import { User } from './user/user.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
+  storeManager(newManager: Manager) {
+    throw new Error('Method not implemented.');
+  }
 
   constructor() { }
 

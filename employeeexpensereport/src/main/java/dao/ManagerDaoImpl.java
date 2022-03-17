@@ -63,8 +63,8 @@ public class ManagerDaoImpl implements ManagerDao{
 	}
 
 
-	@Override
-	public ManagerPojo createEmployee(ManagerPojo managerPojo) throws SystemException {
+	
+	public ManagerPojo createManager(ManagerPojo managerPojo) throws SystemException {
 		 Connection conn = DBUtil.obtainConnection();
 	        try {
 	       Statement stmt = conn.createStatement();

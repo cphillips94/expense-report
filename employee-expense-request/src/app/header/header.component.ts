@@ -20,7 +20,7 @@ export class HeaderComponent implements OnInit {
 
   getRole(): string{
     let data: User = this.authService.retrieveUser();
-    return data.role;
+    return data.employeeFirstName;
   }
 }
 
